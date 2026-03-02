@@ -16,17 +16,11 @@ Program::Program() {
             new SpEnemy(600, 150)
         });
 
-        float x = 0;
-        float y = 0;
-    for (int i = 0; i < 30; i++) { //Do check por que los enemigos no cargan (aka x no carga la fila de enemigos)
+    for (int i = 0; i < 30; i++) {
+        float x = 250 + 50 * i;
+        float y = 200 + 50 * i;
 
-         x = x + 250;
-            x += 10;
-
-         y = y + 200;
-            y += 50;
-        
-       Enemy::enemies.push_back(std::pair<std::pair<float, float>, Enemy*> {
+        Enemy::enemies.push_back(std::pair<std::pair<float, float>, Enemy*> {
             std::pair<float, float>{x, y}, 
             new StdEnemy(x, y)
         });
