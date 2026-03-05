@@ -35,7 +35,13 @@ void Program::Update() {
     pauseFrames = std::max(pauseFrames - 1, 0);
 
     if (!startup && !paused && !gameOver && pauseFrames <= 0) {
-        Enemy::ManageEnemies(player->hitBox);
+        Enemy::ManageEnemies(player->hitBox, score, PointlivesTracker);
+        if(PointlivesTracker >= 1000){
+            if (lives < 5){
+                lives += 1;
+            }
+            PointlivesTracker %= 1000;
+        }
         StdEnemy::attackReset();
         ManageEnemyRespawns();
         player->update();
@@ -159,6 +165,14 @@ void Program::KeyInputs() {
      if (IsKeyPressed('K'))
     {
         score += 500;
+        PointlivesTracker += 500;
+
+        if(PointlivesTracker >= 1000){
+            if (lives < 5){
+                lives += 1;
+            }
+            PointlivesTracker %= 1000;
+        }
     }
     
     if (gameOver && IsKeyPressed(KEY_ENTER)) {
