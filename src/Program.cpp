@@ -99,13 +99,7 @@ void Program::Draw() {
 void Program::ManageEnemyRespawns() {
     delay = std::max(delay - 1, 0);
 
-        newLevel = score/1000;
-        respawnCooldown -= newLevel;
-    if (ScoreLevel < newLevel)
-    {   
-        ScoreLevel = newLevel;
-    }
-    
+    respawnCooldown -= 1;
     if (respawnCooldown <= 0) {
         respawnCooldown = 1080;
         for (std::pair<std::pair<float, float>, Enemy*>& p : Enemy::enemies) {
@@ -128,6 +122,7 @@ void Program::ManageEnemyRespawns() {
             }
         }
     }
+
     if(respawns >= 4) {
         count = 4;
         respawns = 0;
