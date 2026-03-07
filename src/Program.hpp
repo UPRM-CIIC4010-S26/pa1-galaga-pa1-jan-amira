@@ -21,6 +21,8 @@ class Program {
         int pauseFrames = 0;
         int score = 0;
         int PointlivesTracker = 0; 
+        int ScoreLevel = 0;
+        int newLevel = 0;
 
         bool startup = true;
         bool paused = false;
