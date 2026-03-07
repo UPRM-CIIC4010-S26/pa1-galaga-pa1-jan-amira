@@ -100,7 +100,8 @@ void Program::ManageEnemyRespawns() {
     delay = std::max(delay - 1, 0);
 
         newLevel = score/1000;
-        respawnCooldown -= newLevel;
+        respawnCooldown -= (1 + newLevel);
+        respawnCooldown = std::max(respawnCooldown, 0);
     if (ScoreLevel < newLevel)
     {   
         ScoreLevel = newLevel;
@@ -233,4 +234,5 @@ void Program::Reset() {
     count = 0;
     delay = 0;
     lives = 3;
+    score = 0;
 }
