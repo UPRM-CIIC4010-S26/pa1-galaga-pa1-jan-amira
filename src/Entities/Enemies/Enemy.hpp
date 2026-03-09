@@ -55,6 +55,15 @@ class Enemy {
                         if (p2.ID != 1 && HitBox::Collision(p.second->hitBox, p2.getHitBox())) {
                             p.second->health--;
                             p2.del = true;
+                        
+                            if(p.second->health > 0)
+                            {
+                            PlaySound(SoundManager::hit);
+                            }
+                            else 
+                            {
+                            PlaySound(SoundManager::dead); 
+                            }
                         }
                     }
 
@@ -68,7 +77,6 @@ class Enemy {
                     }
                 }
             }
-            
             for (int i = 0; i < Enemy::enemies.size(); i++) {
                 if ((Enemy::enemies[i].second && Enemy::enemies[i].second->position.first <= -30) || 
                     (!Enemy::enemies[i].second && Enemy::enemies[i].first.first == 0 && Enemy::enemies[i].first.second == 0)) {
