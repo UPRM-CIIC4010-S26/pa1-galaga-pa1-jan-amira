@@ -34,6 +34,8 @@ void Program::Update() {
     }
     pauseFrames = std::max(pauseFrames - 1, 0);
 
+    UpdateMusicStream(SoundManager::background);
+
     if (!startup && !paused && !gameOver && pauseFrames <= 0) {
         Enemy::ManageEnemies(player->hitBox, score, PointlivesTracker);
         if(PointlivesTracker >= 1000){
@@ -168,7 +170,7 @@ void Program::KeyInputs() {
     if (!paused && !startup && IsKeyPressed('O')) gameOver = !gameOver;
     if (!gameOver && !paused && IsKeyPressed('I')) startup = !startup;
     if (IsKeyPressed('H')) HitBox::drawHitbox = !HitBox::drawHitbox;
-     if (IsKeyPressed('K'))
+    if (IsKeyPressed('K'))
     {
         score += 500;
         PointlivesTracker += 500;
@@ -180,6 +182,8 @@ void Program::KeyInputs() {
             PointlivesTracker %= 1000;
         }
     }
+    
+    if(IsKeyPressed(KEY_ENTER)) PlayMusicStream(SoundManager::background);
     
     if (gameOver && IsKeyPressed(KEY_ENTER)) {
         gameOver = false;
