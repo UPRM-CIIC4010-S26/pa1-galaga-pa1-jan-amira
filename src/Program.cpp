@@ -70,7 +70,11 @@ void Program::Update() {
             }
         }
 
-        if (lives <= 0 && pauseFrames <= 0) gameOver = true;
+        if (lives <= 0 && pauseFrames <= 0){
+            gameOver = true;
+        StopMusicStream(SoundManager::background);
+        PlaySound(SoundManager::OutroScreen);
+        }
         Projectile::CleanProjectiles();
         Projectile::ProjectileCollision();
     }

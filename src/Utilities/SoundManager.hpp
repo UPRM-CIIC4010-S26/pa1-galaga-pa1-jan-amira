@@ -9,6 +9,7 @@ class SoundManager {
     static inline Sound hit;
     static inline Sound shoot;
     static inline Music background;
+    static inline Sound OutroScreen;
 
     static void Load() {
         attack = LoadSound("audio/attack.mp3");
@@ -17,6 +18,7 @@ class SoundManager {
         hit = LoadSound("audio/hit.mp3");
         shoot = LoadSound("audio/shoot.mp3");
         background = LoadMusicStream("audio/Background.mp3");
+        OutroScreen = LoadSound("audio/OutroScreen.mp3");
     }
 
     static void Unload() {
@@ -25,6 +27,7 @@ class SoundManager {
         UnloadSound(gameOver);
         UnloadSound(hit);
         UnloadSound(shoot);
-        UnloadMusicStream(background);
+        UnloadMusicStream(background);  
+        UnloadSound(OutroScreen);
     }
 };
