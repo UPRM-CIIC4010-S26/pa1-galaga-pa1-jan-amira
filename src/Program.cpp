@@ -185,16 +185,16 @@ void Program::KeyInputs() {
             }
             PointlivesTracker %= 1000;
         }
-    }
+    } 
     
-    if(IsKeyPressed(KEY_ENTER)) PlayMusicStream(SoundManager::background);
-    
-    if (gameOver && IsKeyPressed(KEY_ENTER)) {
+    if(IsKeyPressed(KEY_ENTER))PlayMusicStream(SoundManager::background);;
+    if (gameOver && IsKeyPressed(KEY_ENTER)) { 
         gameOver = false;
         Reset();
     }
 
     if (startup && IsKeyPressed(KEY_ENTER)) {
+        PlaySound(SoundManager::StartUp);
         startup = false;
     }
 
