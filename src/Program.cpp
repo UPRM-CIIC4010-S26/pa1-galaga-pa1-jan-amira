@@ -170,10 +170,14 @@ void Program::DrawGameOver() {
 }
 
 void Program::KeyInputs() {
-    if ((!gameOver && !startup && IsKeyPressed('P')) || (paused && IsKeyPressed(KEY_ENTER))) paused = !paused;
+    if ((!gameOver && !startup && IsKeyPressed('P')) || (paused && IsKeyPressed(KEY_ENTER))) {
+        paused = !paused;
+        PauseMusicStream(SoundManager::background);
+    }
     if (!paused && !startup && IsKeyPressed('O'))
     {
          PlaySound(SoundManager::OutroScreen);
+         StopMusicStream(SoundManager::background);
          gameOver = !gameOver;
     }
     if (!gameOver && !paused && IsKeyPressed('I'))
