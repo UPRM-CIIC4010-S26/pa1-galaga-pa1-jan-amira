@@ -171,8 +171,16 @@ void Program::DrawGameOver() {
 
 void Program::KeyInputs() {
     if ((!gameOver && !startup && IsKeyPressed('P')) || (paused && IsKeyPressed(KEY_ENTER))) paused = !paused;
-    if (!paused && !startup && IsKeyPressed('O')) gameOver = !gameOver;
-    if (!gameOver && !paused && IsKeyPressed('I')) startup = !startup;
+    if (!paused && !startup && IsKeyPressed('O'))
+    {
+         PlaySound(SoundManager::OutroScreen);
+         gameOver = !gameOver;
+    }
+    if (!gameOver && !paused && IsKeyPressed('I'))
+    {
+        PlaySound(SoundManager::StartUp);
+        startup = !startup;
+    } 
     if (IsKeyPressed('H')) HitBox::drawHitbox = !HitBox::drawHitbox;
     if (IsKeyPressed('K'))
     {
